@@ -2,14 +2,15 @@
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
 void solve()
 {
-    int N, M;
-    cin >> N >> M;
+    int a, b;
+    char c;
+    cin >> a >> c >> b;
+    cout << a + b << endl;
 }
 
 int main(int argc, char const *argv[])

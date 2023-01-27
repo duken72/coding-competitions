@@ -1,8 +1,13 @@
 #!/bin/bash
 # link?
-clear
+
 # Done: 
 # Undone: 
-g++ -Wall   a.cpp -o out
-./out <     a.txt
+clear
+g++ -DDEBUG=false -Wall "$1" -o out
+if [ -f "${1%'.cpp'}.txt" ]; then
+    ./out < ${1%'.txt'}
+else
+    ./out
+fi
 rm -f out

@@ -3,15 +3,17 @@
 
 #include <iostream>
 #include <algorithm>
+#include <numeric>
 // #include <sstream>
 // #include <fstream>
-// #include <math.h>
+#include <math.h>
 // #include <thread>
 // #include <chrono>
 // #include <memory>
 // #include <exception>
 
 #include <string>
+// #include <cstring>
 #include <array>
 #include <vector>
 #include <utility>
@@ -42,7 +44,7 @@ int main(int argc, char const *argv[])
     std::ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     int t; cin >> t;    // no. test cases
-    for (int i = 0; i < t; i++)
+    while (t--)
         solve();
     return 0;
 }

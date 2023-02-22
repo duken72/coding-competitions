@@ -1,17 +1,19 @@
-#include <iostream>
-#include <vector>
-
 // https://cp-algorithms.com/data_structures/segment_tree.html
+#include <bits/stdc++.h>
+#include <math.h>
+
+using namespace std;
+
 template <typename T = int>
 class SegmentTree {
+    // any associative operation (a ? b) ? c = a ? (b ? c)
     static T merge(const T &a, const T &b) { return a + b; }
     
     int m_size;
-    std::vector<T> m_array;
+    vector<T> m_array;
 
     void build(const int& id, const int& low, const int& high,
-            const std::vector<T>& in_array)
-    {
+            const vector<T>& in_array) {
         if (low == high) {
             m_array[id] = in_array[low];
             return;
@@ -23,8 +25,7 @@ class SegmentTree {
     }
 
     T query(const int& id, const int& low, const int& high,
-            const int& tgt_low, const int& tgt_high) const
-    {
+            const int& tgt_low, const int& tgt_high) const {
         if (low == tgt_low && high == tgt_high)
             return m_array[id];
         int mid = low + (high - low) / 2;
@@ -38,8 +39,7 @@ class SegmentTree {
     }
 
     void update(const int& id, const int& low, const int& high,
-            const int& target, const T& val)
-    {
+            const int& target, const T& val) {
         if (target < low || target > high)
             return;
         if (low == high) {
@@ -53,44 +53,32 @@ class SegmentTree {
     }
 
 public:
-    SegmentTree(const std::vector<T>& array)
-    : m_size(array.size()), m_array(4 * m_size) {
-        build(0, 0, m_size - 1, array);
-    }
-
-    T query(const int& low, const int& high) const {
-        return query(0, 0, m_size - 1, low, high);
-    }
-
-    T query(const int& id) const {
-        return query(0, 0, m_size - 1, id, id);
-    }
-    
-    void update(const int& id, const T &val) {
-        update(0, 0, m_size - 1, id, val);
-    }
+    SegmentTree(const vector<T>& array)
+    : m_size(array.size()), m_array(4 * m_size) { build(0, 0, m_size - 1, array); }
+    T query(const int& low, const int& high) const { return query(0, 0, m_size - 1, low, high); }
+    T query(const int& id) const { return query(0, 0, m_size - 1, id, id); }
+    void update(const int& id, const T &val) { update(0, 0, m_size - 1, id, val); }
 };
 
 int main(int argc, char const *argv[])
 {
-    std::vector<int> v = { 1, 4, 4, 8, 3, 7 };
+    vector<int> v = { 1, 4, 4, 8, 3, 7 };
     SegmentTree<int> st(v);
 
-    for (auto val : v) {
-        std::cout << val << " ";
-    }   std::cout << std::endl;
+    for (auto val : v)  cout << val << ' ';
+    cout << endl;
     
-    std::cout << "Sum in range [0, 0]: " << st.query(0) << std::endl;
-    std::cout << "Sum in range [0, 1]: " << st.query(0, 1) << std::endl;
-    std::cout << "Sum in range [2, 5]: " << st.query(2, 5) << std::endl;
+    cout << "Sum in range [0, 0]: " << st.query(0) << endl;
+    cout << "Sum in range [0, 1]: " << st.query(0, 1) << endl;
+    cout << "Sum in range [2, 5]: " << st.query(2, 5) << endl;
 
-    std::cout << "Setting id=1 to value=9" << std::endl;
+    cout << "Setting id=1 to value=9" << endl;
     st.update(1, 9);
-    std::cout << "Sum in range [0, 1]: " << st.query(0, 1) << std::endl;
+    cout << "Sum in range [0, 1]: " << st.query(0, 1) << endl;
 
-    std::cout << "Setting id=2 to value=7" << std::endl;
+    cout << "Setting id=2 to value=7" << endl;
     st.update(2, 7);
-    std::cout << "Sum in range [2, 5]: " << st.query(2, 5) << std::endl;
+    cout << "Sum in range [2, 5]: " << st.query(2, 5) << endl;
 
     return 0;
 }

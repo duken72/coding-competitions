@@ -33,12 +33,16 @@ using pii   = pair<int, int>;
 // I/O
 #define get_arr(a, n)   for(int i = 0; i < n; i++)  cin >> a[i];
 #define print_arr(a, n) for(int i = 0; i < n; i++)  cout << a[i] << " \n"[i == n - 1];
-#define print_v(v)      for (const auto& i : v) { cout << i << ' '; } cout << endl;
 #define print_var(x)    cerr << #x << " = " << x << endl;
 template <typename T, typename...Ts>
 constexpr void print_vars(T&& first, Ts&&... rest) noexcept {
     if constexpr (sizeof...(Ts) == 0)   cout << first;
     else {  cout << first << ' '; print_vars(std::forward<Ts>(rest)...); }
+}
+template <typename T>
+ostream& operator<<(ostream& os, const vector<T>& vect) noexcept {
+    for (const T& v : vect)     os << v << ' ';
+    return os;
 }
 
 // Greatest Common Divisor (GCD)

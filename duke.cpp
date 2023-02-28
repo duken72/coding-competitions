@@ -40,12 +40,16 @@ using pii   = pair<int, int>;
 // I/O
 #define get_arr(a, n)   for(int i = 0; i < n; i++)  cin >> a[i];
 #define print_arr(a, n) for(int i = 0; i < n; i++)  cout << a[i] << " \n"[i == n - 1];
-#define print_v(v)      for (const auto& i : v) { cout << i << ' '; } cout << endl;
 #define print_var(x)    cerr << #x << " = " << x << endl;
 template <typename T, typename...Ts>
 constexpr void print_vars(T&& first, Ts&&... rest) noexcept {
     if constexpr (sizeof...(Ts) == 0)   cout << first;
     else {  cout << first << ' '; print_vars(std::forward<Ts>(rest)...); }
+}
+template <typename T>
+ostream& operator<<(ostream& os, const vector<T>& vect) noexcept {
+    for (const T& v : vect)     os << v << ' ';
+    return os;
 }
 
 // Greatest Common Divisor (GCD)
@@ -72,6 +76,12 @@ bool is_prime(int n) {
  * sort, binary_search, reverse,
  * gcd, swap, move 
  * next_permutation, prev_permutation
+ * int8_t   (1 byte)    ±127
+ * int16_t  (2 bytes)   ±3.2E4      short
+ * int32_t  (4 bytes)   ±2.1E9      int
+ * int64_t  (8 bytes)   ±9.2E18     long long
+ * float    (4 bytes)   3.4E±38
+ * double   (8 bytes)   1.7E±308
  */
 
 void solve()
@@ -85,8 +95,8 @@ int main(int argc, char const *argv[])
 {
     std::ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    // int t; cin >> t;    // no. test cases
-    // while (t--)
+    int num_tests; cin >> num_tests;
+    while (num_tests--)
         solve();
     return 0;
 }

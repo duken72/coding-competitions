@@ -32,16 +32,19 @@ using pii   = pair<int, int>;
 
 // I/O
 #define get_arr(a, n)   for(int i = 0; i < n; i++)  cin >> a[i];
-#define print_arr(a, n) for(int i = 0; i < n; i++)  cout << a[i] << " \n"[i == n - 1];
-#define print_var(x)    cerr << #x << " = " << x << endl;
+#define LOG(x)          cerr << #x << " = " << x << endl;
 template <typename T, typename...Ts>
-constexpr void print_vars(T&& first, Ts&&... rest) noexcept {
-    if constexpr (sizeof...(Ts) == 0)   cout << first;
-    else {  cout << first << ' '; print_vars(std::forward<Ts>(rest)...); }
+constexpr void print(T&& first, Ts&&... rest) noexcept {
+    if constexpr (sizeof...(Ts) == 0)   cout << first << endl;
+    else {  cout << first << ' '; print(std::forward<Ts>(rest)...); }
+}
+template <typename T>
+void print(T a[], int n) {
+    for(int i = 0; i < n; i++)  cout << a[i] << " \n"[i == n - 1];
 }
 template <typename T>
 ostream& operator<<(ostream& os, const vector<T>& vect) noexcept {
-    for (const T& v : vect)     os << v << ' ';
+    for (const T& v : vect) { os << v << ' '; } os << endl;
     return os;
 }
 

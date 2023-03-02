@@ -39,16 +39,19 @@ using pii   = pair<int, int>;
 
 // I/O
 #define get_arr(a, n)   for(int i = 0; i < n; i++)  cin >> a[i];
-#define print_arr(a, n) for(int i = 0; i < n; i++)  cout << a[i] << " \n"[i == n - 1];
-#define print_var(x)    cerr << #x << " = " << x << endl;
+#define LOG(x)          cerr << #x << " = " << x << endl;
 template <typename T, typename...Ts>
-constexpr void print_vars(T&& first, Ts&&... rest) noexcept {
-    if constexpr (sizeof...(Ts) == 0)   cout << first;
-    else {  cout << first << ' '; print_vars(std::forward<Ts>(rest)...); }
+constexpr void print(T&& first, Ts&&... rest) noexcept {
+    if constexpr (sizeof...(Ts) == 0)   cout << first << endl;
+    else {  cout << first << ' '; print(std::forward<Ts>(rest)...); }
+}
+template <typename T>
+void print(T a[], int n) {
+    for(int i = 0; i < n; i++)  cout << a[i] << " \n"[i == n - 1];
 }
 template <typename T>
 ostream& operator<<(ostream& os, const vector<T>& vect) noexcept {
-    for (const T& v : vect)     os << v << ' ';
+    for (const T& v : vect) { os << v << ' '; } os << endl;
     return os;
 }
 
@@ -72,21 +75,18 @@ bool is_prime(int n) {
 #endif  // PRECOMPILED_HEADER
 
 /** Useful funcs in C++ STL
- * memset, fill, fill_n
- * sort, binary_search, reverse,
- * gcd, swap, move 
- * next_permutation, prev_permutation
- * int8_t   (1 byte)    ±127
- * int16_t  (2 bytes)   ±3.2E4      short
- * int32_t  (4 bytes)   ±2.1E9      int
- * int64_t  (8 bytes)   ±9.2E18     long long
- * float    (4 bytes)   3.4E±38
- * double   (8 bytes)   1.7E±308
+ * memset, fill, fill_n, sort, binary_search, reverse,
+ * gcd, swap, move, next_permutation, prev_permutation
+ * int8_t           ±127    |   int16_t (short)     ±3.2E4      
+ * int32_t(int)     ±2.1E9  |   int64_t (long long) ±9.2E18     
+ * float (4 bytes)  3.4E±38 |   double (8 bytes)    1.7E±308
  */
 
 void solve()
 {
-    
+    int n;  cin >> n;
+    int a[n]; get_arr(a, n);
+
 #if LOCAL
 #endif
 }

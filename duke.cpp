@@ -14,28 +14,15 @@
 using namespace std;
 
 const int ALPHABET = 26;
-
-// Typedefs
 using ll    = long long;
-using vc    = vector<char>;
-using vb    = vector<bool>;
-using vi    = vector<int>;
-using vl    = vector<ll>;
 using pii   = pair<int, int>;
 
-// String
-#define YES     cout << "YES\n"
-#define Yes     cout << "Yes\n"
-#define NO      cout << "NO\n"
-#define No      cout << "No\n"
-#define endl    '\n'
-
-// Vector / Pair
-#define pb              push_back
-#define eb              emplace_back
-#define all(vect)       vect.begin(), vect.end()
-#define ff              first
-#define ss              second
+#define endl        '\n'
+#define pb          push_back
+#define eb          emplace_back
+#define all(vect)   vect.begin(), vect.end()
+#define ff          first
+#define ss          second
 
 // I/O
 #define get_arr(a, n)   for(int i = 0; i < n; i++)  cin >> a[i];
@@ -54,40 +41,17 @@ ostream& operator<<(ostream& os, const vector<T>& vect) noexcept {
     for (const T& v : vect) { os << v << ' '; } os << endl;
     return os;
 }
-
-// Greatest Common Divisor (GCD)
-template <typename T>
-T GCD(const T& a, const T& b) {
-    if (b==0)   return a;
-    return GCD(b, a%b);
-}
-
-// Check a number is prime
-bool is_prime(int n) {
-    if (n <= 1)     return false;
-    if (n <= 3)     return true;
-    if ((n % 2 == 0) || (n % 3 == 0))           return false;
-    // Prime number above 3 must be either (6i + 1) or (6i - 1)
-    for (int i = 5; i * i <= n; i = i + 6)
-        if ((n % i == 0) || (n % (i + 2) == 0)) return false;
-    return true;
-}
 #endif  // PRECOMPILED_HEADER
 
-/** Useful funcs in C++ STL
- * memset, fill, fill_n, sort, binary_search, reverse,
- * gcd, swap, move, next_permutation, prev_permutation
- * int8_t           ±127    |   int16_t (short)     ±3.2E4      
- * int32_t(int)     ±2.1E9  |   int64_t (long long) ±9.2E18     
- * float (4 bytes)  3.4E±38 |   double (8 bytes)    1.7E±308
- */
+const int N = 2e5 + 5;
 
 void solve()
 {
-    int n;  cin >> n;
-    int a[n]; get_arr(a, n);
+    int n;      cin >> n;
+    int a[n];   get_arr(a, n);
 
 #if LOCAL
+print(a, n);
 #endif
 }
 
@@ -95,7 +59,7 @@ int main(int argc, char const *argv[])
 {
     std::ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    int num_tests; cin >> num_tests;
+    int num_tests = 1; cin >> num_tests;
     while (num_tests--)
         solve();
     return 0;

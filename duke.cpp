@@ -1,26 +1,17 @@
 #pragma GCC optimize("O2,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 
-#ifndef ONLINE_JUDGE
-#define PRECOMPILED_HEADER true
-#endif
-
-#if PRECOMPILED_HEADER
-#include "pch.hpp"
-#else   // !PRECOMPILED_HEADER
+#ifdef ONLINE_JUDGE
 #include <bits/stdc++.h>
-#include <math.h>
 
 using namespace std;
 
 const int ALPHABET = 26;
-using ll    = long long;
-using pii   = pair<int, int>;
+typedef long long ll;
+typedef pair<int, int> pii;
 
 #define endl        '\n'
-#define pb          push_back
-#define eb          emplace_back
-#define all(vect)   vect.begin(), vect.end()
+#define all(v)      v.begin(), v.end()
 #define ff          first
 #define ss          second
 
@@ -41,26 +32,30 @@ ostream& operator<<(ostream& os, const vector<T>& vect) noexcept {
     for (const T& v : vect) { os << v << ' '; } os << endl;
     return os;
 }
-#endif  // PRECOMPILED_HEADER
+#else   // ONLINE_JUDGE
+#include "pch.hpp"
+#endif  // ONLINE_JUDGE
 
 const int N = 2e5 + 5;
+int n, m;
+int x, y, a, b;
 
-void solve()
-{
-    int n;      cin >> n;
-    int a[n];   get_arr(a, n);
-
-#if LOCAL
-print(a, n);
-#endif
+void solve() {
+  
+// #if LOCAL
+// #endif
 }
 
 int main(int argc, char const *argv[])
 {
-    std::ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    int num_tests = 1; cin >> num_tests;
-    while (num_tests--)
+    int num_tests = 1;
+    cin >> num_tests;
+    for (int i = 1; i <= num_tests; i++) {
+        // cout << "Case #" << i << ":\n";
         solve();
+    }
     return 0;
 }
+

@@ -61,4 +61,16 @@ void suffix_array(string &s)
         lcp[pi] = k;
         k = max(k - 1, 0);
     }
+
+    for (int i = 0; i < n; i++) {
+        cout << lcp[i] << ' ' << sa[i] << ' '
+             << s.substr(sa[i]) << endl;
+    }
+}
+
+int main(int argc, char const *argv[])
+{
+    string s = "ababba";
+    suffix_array(s);
+    return 0;
 }

@@ -1,4 +1,8 @@
 input.txt
+out
+*.in
+*.out
+.vscode/
 
 # Prerequisites
 *.d

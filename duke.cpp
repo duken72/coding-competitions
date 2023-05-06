@@ -38,7 +38,6 @@ ostream& operator<<(ostream& os, const vector<T>& vect) noexcept {
 
 const int N = 2e5 + 5;
 int n, m;
-int x, y, a, b;
 
 void solve() {
   
